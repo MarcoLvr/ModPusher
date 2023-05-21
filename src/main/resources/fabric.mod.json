@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "id": "modpusher",
+  "version": "${version}",
+  "name": "modpusher",
+  "description": "",
+  "authors": [
+    "MarcoLvr",
+    "MrLiam2614",
+    "VoxiByte"
+  ],
+  "contact": {
+    "repo": "https://github.com/EBLPlugins/modpusher"
+  },
+  "license": "MIT",
+  "icon": "assets/modpusher/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "it.eblcraft.modpusher.client.ModpusherClient"
+    ],
+    "main": [
+      "it.eblcraft.modpusher.Modpusher"
+    ]
+  },
+  "mixins": [
+    "modpusher.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
