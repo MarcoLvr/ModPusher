@@ -12,6 +12,7 @@ import java.util.List;
 @Setter
 public class ModPusherConfig {
 
+    private String packName = "Unnamed pack";
     private List<ModToPush> mods = new ArrayList<>();
 
     @Getter
