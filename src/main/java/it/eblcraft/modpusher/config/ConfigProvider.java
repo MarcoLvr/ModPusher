@@ -1,4 +1,4 @@
-package it.eblcraft.blazequeues.config;
+package it.eblcraft.modpusher.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
@@ -14,30 +14,31 @@ public class ConfigProvider<T> {
     private T config;
     private final Class<T> configClass;
     private final File filePath;
-    public ConfigProvider(Path dataDirectory, String fileName, Class<T> configClass){
-        this.configClass=configClass;
-        mapper=new ObjectMapper(new YAMLFactory());
-        filePath=new File(dataDirectory.toFile(), fileName);
-        if(!filePath.exists()){
+
+    public ConfigProvider(Path dataDirectory, String fileName, Class<T> configClass) {
+        this.configClass = configClass;
+        mapper = new ObjectMapper(new YAMLFactory());
+        filePath = new File(dataDirectory.toFile(), fileName);
+        if (!filePath.exists()) {
             filePath.getParentFile().mkdirs();
             try {
                 config = configClass.getConstructor().newInstance();
                 reloadConfig(true);
-            }catch (NoSuchMethodException e){
+            } catch (NoSuchMethodException e) {
                 System.out.println("Cannot create config: Missing no args constructor!");
-            } catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
 
-        }else{
+        } else {
             loadConfig();
         }
 
     }
 
-    private boolean loadConfig(){
+    private boolean loadConfig() {
         try {
-            config= mapper.readValue(filePath, configClass);
+            config = mapper.readValue(filePath, configClass);
             return true;
         } catch (IOException e) {
             e.printStackTrace();
@@ -45,7 +46,7 @@ public class ConfigProvider<T> {
         }
     }
 
-    public boolean saveConfig(){
+    public boolean saveConfig() {
         try {
             mapper.writeValue(filePath, config);
             return true;
@@ -55,13 +56,13 @@ public class ConfigProvider<T> {
         }
     }
 
-    public Optional<T> getConfig(){
+    public Optional<T> getConfig() {
         return Optional.ofNullable(config);
     }
 
 
-    public void reloadConfig(boolean save){
-        if(save) saveConfig();
+    public void reloadConfig(boolean save) {
+        if (save) saveConfig();
         loadConfig();
     }
 }

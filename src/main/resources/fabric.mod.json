@@ -17,9 +17,6 @@
   "environment": "client",
   "entrypoints": {
     "client": [
-      "it.eblcraft.modpusher.client.ModpusherClient"
-    ],
-    "main": [
       "it.eblcraft.modpusher.Modpusher"
     ]
   },
