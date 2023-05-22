@@ -29,13 +29,12 @@ import java.util.Collection;
 import java.util.List;
 
 @Getter
-public class Modpusher implements ClientModInitializer, ScreenEvents.AfterInit{
+public class Modpusher implements ClientModInitializer{
 
     private ConfigProvider<ModPusherConfig> configProvider;
 
     @Override
     public void onInitializeClient() {
-        ScreenEvents.AFTER_INIT.register(this::afterInit);
         File f = new File(FabricLoader.getInstance().getConfigDir().toFile(), "modpusher");
         f.mkdirs();
         configProvider = new ConfigProvider<>(f.toPath(), "config.yml", ModPusherConfig.class);
@@ -74,10 +73,5 @@ public class Modpusher implements ClientModInitializer, ScreenEvents.AfterInit{
             return null;
         }
 
-    }
-
-    @Override
-    public void afterInit(MinecraftClient client, Screen screen, int scaledWidth, int scaledHeight) {
-        //TODO: grafica
     }
 }
