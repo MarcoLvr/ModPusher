@@ -17,7 +17,7 @@
   "environment": "client",
   "entrypoints": {
     "client": [
-      "it.eblcraft.modpusher.Modpusher"
+      "it.puppabusters.modpusher.Modpusher"
     ]
   },
   "mixins": [
