@@ -35,11 +35,12 @@ public class CustomTitleScreen extends Screen {
     @Override
     public void render(MatrixStack matrices, int mouseX, int mouseY, float delta) {
         renderBg(matrices);
+        drawCenteredText(matrices, textRenderer, "Mod Pusher", width / 2, height / 2 - 30, 0xFFFFFF);
         if (currentModName.equals("modpusher:ended")) {
-            drawCenteredText(matrices, textRenderer, "ModPusher - Downloading completed", width / 2, height / 2 - 20, 0xFFFFFF);
+            drawCenteredText(matrices, textRenderer, "Download of " + totalMods + " mods  completed", width / 2, height / 2 - 20, 0xFFFFFF);
             drawCenteredText(matrices, textRenderer, "You can restart minecraft now", width / 2, height / 2 + 30, 0xFFFFFF);
         } else {
-            drawCenteredText(matrices, textRenderer, "ModPusher - Downloading mods", width / 2, height / 2 - 20, 0xFFFFFF);
+            drawCenteredText(matrices, textRenderer, "Downloading mods", width / 2, height / 2 - 20, 0xFFFFFF);
             drawCenteredText(matrices, textRenderer, currentModName + " (" + currentMod + "/" + totalMods + ")", width / 2, height / 2 + 30, 0xFFFFFF);
         }
         pageController();

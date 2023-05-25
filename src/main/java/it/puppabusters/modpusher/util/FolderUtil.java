@@ -16,7 +16,6 @@ public class FolderUtil {
             if (!mod.endsWith(".jar")) continue;
             File modFile = new File(modsFolder, mod);
             hashes.add(Modpusher.calcHash(modFile));
-            System.out.println(mod);
         }
         return hashes;
     }
